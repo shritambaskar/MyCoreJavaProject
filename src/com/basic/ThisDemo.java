@@ -10,8 +10,10 @@ public class ThisDemo {
 		
 		ThisDemo td = new ThisDemo(56, 5);
 		td.add();
-		boolean isEmail = td.valiate("@shrikant.com");
+		boolean isEmail = td.valiateEmail("shri@shrikant.com");
+		boolean isPassword = td.validatePassword("shri@1983");
 		System.out.println(isEmail);
+		System.out.println(isPassword);
 		
 
 	}
@@ -26,12 +28,33 @@ public class ThisDemo {
 		System.out.println(x+y);
 	}
 	
-	public boolean valiate(String email) {
+	public boolean valiateEmail(String email) {
 		//boolean validate = email.contains("@");
 		String regex = "^(.+)@(.+)$";  
 	     //Compile regular expression to get the pattern  
 	     Pattern pattern = Pattern.compile(regex); 
 	     Matcher matcher = pattern.matcher(email);
+		return matcher.matches();
+	}
+	
+	public boolean validatePassword(String password) {
+//		where:
+//
+//			^ represents starting character of the string.
+//			(?=.*[0-9]) represents a digit must occur at least once.
+//			(?=.*[a-z]) represents a lower case alphabet must occur at least once.
+//			(?=.*[A-Z]) represents an upper case alphabet that must occur at least once.
+//			(?=.*[@#$%^&-+=()] represents a special character that must occur at least once.
+//			(?=\\S+$) white spaces don’t allowed in the entire string.
+//			.{8, 20} represents at least 8 characters and at most 20 characters.
+//			$ represents the end of the string.
+		String regex ="^(?=.*[0-9])"
+                + "(?=.*[a-z])(?=.*[A-Z])"
+                + "(?=.*[@#$%^&+=])"
+                + "(?=\\S+$).{8,20}$";
+	     //Compile regular expression to get the pattern  
+	     Pattern pattern = Pattern.compile(regex); 
+	     Matcher matcher = pattern.matcher(password);
 		return matcher.matches();
 	}
 	
