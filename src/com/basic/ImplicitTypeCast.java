@@ -3,6 +3,9 @@ package com.basic;
 public class ImplicitTypeCast {
 
 	int var = 67;
+	ImplicitTypeCast(){
+		
+	}
 	public static void main(String[] args) {
 		
 		long a = 89 , b = 45; // 134
